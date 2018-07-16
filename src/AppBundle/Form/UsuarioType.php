@@ -13,14 +13,22 @@ class UsuarioType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombre')->add('username')->add('tipoUsuario')->add('contrasena');
+        $builder
+            ->add('nombre')
+            ->add('username')
+            ->add('tipoUsuario')
+            ->add('contrasena');
     }/**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Usuario'
+
+            $resolver->setDefaults(array(
+                'data_class' => 'AppBundle\Entity\Usuario',
+                'csrf_protection' => false,
+                'cascade_validation' => true,
+                'allow_extra_fields' => true,
         ));
     }
 

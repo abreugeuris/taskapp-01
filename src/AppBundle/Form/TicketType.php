@@ -13,14 +13,23 @@ class TicketType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('fecha')->add('descripcion')->add('fechaCreado')->add('usuarioId')->add('usuarioAsignadoId')->add('estado');
+        $builder->add('fechaCreado')
+                 ->add('descripcion')
+                ->add('fechaCompletado')
+                ->add('usuario')
+                ->add('usuarioAsignado')
+                ->add('estado');
     }/**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Ticket'
+
+            $resolver->setDefaults(array(
+                'data_class' => 'AppBundle\Entity\Usuario',
+                'csrf_protection' => false,
+                'cascade_validation' => true,
+                'allow_extra_fields' => true,
         ));
     }
 

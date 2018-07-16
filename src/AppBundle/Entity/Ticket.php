@@ -24,52 +24,45 @@ class Ticket
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha", type="datetime")
+     * @ORM\Column(name="fecha_creado", type="datetime")
      */
-    private $fecha;
+    private $fechaCreado;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="descripcion", type="text")
+     * @ORM\Column(name="descripcion", type="string", length=255)
      */
     private $descripcion;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_creado", type="datetime")
+     * @ORM\Column(name="fecha_completado", type="datetime")
      */
-    private $fechaCreado;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="usuario_id", type="integer")
-     */
-    private $usuarioId;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="usuario_asignado_id", type="integer")
-     */
-    private $usuarioAsignadoId;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="estado", type="string", length=12)
-     */
-    private $estado;
+    private $fechaCompletado;
 
     /**
      * @var int
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario", inversedBy="tickets")
-     * @ORM\JoinColumn(nullable=false)
+     *
      */
     private $usuario;
+
+    /**
+     *
+     * @var int
+     * @ORM\Column(name="usuario_asignado_id", type="integer")
+     */
+    private $usuarioAsignado;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="estado", type="string", length=11)
+     */
+    private $estado;
 
 
     /**
@@ -80,54 +73,6 @@ class Ticket
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set fecha
-     *
-     * @param \DateTime $fecha
-     *
-     * @return Ticket
-     */
-    public function setFecha($fecha)
-    {
-        $this->fecha = $fecha;
-
-        return $this;
-    }
-
-    /**
-     * Get fecha
-     *
-     * @return \DateTime
-     */
-    public function getFecha()
-    {
-        return $this->fecha;
-    }
-
-    /**
-     * Set descripcion
-     *
-     * @param string $descripcion
-     *
-     * @return Ticket
-     */
-    public function setDescripcion($descripcion)
-    {
-        $this->descripcion = $descripcion;
-
-        return $this;
-    }
-
-    /**
-     * Get descripcion
-     *
-     * @return string
-     */
-    public function getDescripcion()
-    {
-        return $this->descripcion;
     }
 
     /**
@@ -155,52 +100,53 @@ class Ticket
     }
 
     /**
-     * Set usuarioId
+     * Set descripcion
      *
-     * @param integer $usuarioId
+     * @param string $descripcion
      *
      * @return Ticket
      */
-    public function setUsuarioId($usuarioId)
+    public function setDescripcion($descripcion)
     {
-        $this->usuarioId = $usuarioId;
+        $this->descripcion = $descripcion;
 
         return $this;
     }
 
     /**
-     * Get usuarioId
+     * Get descripcion
      *
-     * @return int
+     * @return string
      */
-    public function getUsuarioId()
+    public function getDescripcion()
     {
-        return $this->usuarioId;
+        return $this->descripcion;
     }
 
     /**
-     * Set usuarioAsignadoId
+     * Set fechaCompletado
      *
-     * @param integer $usuarioAsignadoId
+     * @param \DateTime $fechaCompletado
      *
      * @return Ticket
      */
-    public function setUsuarioAsignadoId($usuarioAsignadoId)
+    public function setFechaCompletado($fechaCompletado)
     {
-        $this->usuarioAsignadoId = $usuarioAsignadoId;
+        $this->fechaCompletado = $fechaCompletado;
 
         return $this;
     }
 
     /**
-     * Get usuarioAsignadoId
+     * Get fechaCompletado
      *
-     * @return int
+     * @return \DateTime
      */
-    public function getUsuarioAsignadoId()
+    public function getFechaCompletado()
     {
-        return $this->usuarioAsignadoId;
+        return $this->fechaCompletado;
     }
+
 
     /**
      * Set estado
@@ -242,5 +188,20 @@ class Ticket
         $this->usuario = $usuario;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getUsuarioAsignado()
+    {
+        return $this->usuarioAsignado;
+    }
+
+    /**
+     * @param mixed $usuarioAsignado
+     */
+    public function setUsuarioAsignado($usuarioAsignado)
+    {
+        $this->usuarioAsignado = $usuarioAsignado;
+    }
 }
 

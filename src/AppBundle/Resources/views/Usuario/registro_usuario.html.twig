@@ -1,0 +1,62 @@
+
+{% extends 'base.html.twig' %}
+ {% block titulo%}-Registro de Usuario{% endblock %}
+{% block body %}
+    <div class="container jumbotron" >
+        <h2>Registro de Usuario</h2>
+        <div >
+        {{ form_start(form) }}
+        </div>
+        <div >
+        {{ form_row(form.username) }}
+        </div>
+        {{ form_row(form.nombre) }}
+        <div>
+        {{ form_row(form.tipoUsuario) }}
+        </div >
+            {{ form_row(form.contrasena) }}
+        <div >
+            {# Enlace al registro #}
+            <u class="login"><a  href="">Login</a>
+
+            </u>
+            <button type="submit"  class="btn btn-success btn_submit"  onclick="guardar()">Registrar Usuario</button>
+        </div>
+    </div>
+    {{ form_end(form) }}
+{% block javascrit %}
+   {#{{ parent() }}#}
+    <script>
+
+        function guardar(){
+
+            var username = $('#appbundle_usuario_username').val();
+            var nombre = $('#appbundle_usuario_nombre').val();
+            var tipo_usuario= $('#appbundle_usuario_tipoUsuario').val();
+            var contrasena = $('#appbundle_usuario_contrasena').val();
+
+            var data = {
+                nombre: nombre,
+                username: username,
+                tipo_usuario: tipo_usuario,
+                contrasena: contrasena
+            };
+            console.log(data);
+            $.ajax({
+                url:Routing.generate("guardar_usuario"),
+                type: 'POST',
+                data: JSON.stringify(data),
+                success: function (response) {
+                    console.log(response);
+                   window.location.href="/app_dev.php/usuario";
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+        }
+
+    </script>
+    {% endblock %}
+
+{% endblock %}

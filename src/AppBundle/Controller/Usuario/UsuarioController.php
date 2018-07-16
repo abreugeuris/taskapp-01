@@ -2,14 +2,15 @@
 /**
  * Created by PhpStorm.
  * User: Geuris
- * Date: 11/06/2018
- * Time: 18:34
+ * Date: 16/06/2018
+ * Time: 15:34
  */
 
 namespace AppBundle\Controller\Usuario;
 
 
 use AppBundle\Entity\Usuario;
+use AppBundle\Form\UsuarioType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -39,8 +40,24 @@ class UsuarioController extends Controller
                 "usuarios"=>$usuarios
             ]
         );
-    }
 
+    }
+    /**
+     * @Route("/registro", name="registro_usuario")
+     */
+    public function indexRegistro( Request $request){
+
+        $usuario=new Usuario();
+        $form= $this->createForm(UsuarioType::class,$usuario);
+        $form->handleRequest($request);
+
+        return $this->render(
+            '@App/Usuario/registro_usuario.html.twig',
+            array('form' => $form->createView())
+        );
+
+
+    }
 
 
 
@@ -51,8 +68,7 @@ class UsuarioController extends Controller
 
 
     /**
-     *
-     * @Route("/rest/usuario", name="guardar_usuario")
+     * @Route("/rest/usuario", options={"expose"=true}, name="guardar_usuario")
      * @Method("POST")
      * @param Request $request
      * @return JsonResponse

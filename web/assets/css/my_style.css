@@ -1,0 +1,42 @@
+html{
+    margin: 0px;
+    padding: 0px;
+}
+.form_login {
+    border-radius: 4px;
+    margin: 50px auto;
+    width: 420px;
+}
+.btn_submit {
+    margin-top: 3%;
+    float: right;
+    font-size: xx-large;
+}
+
+.link_registro{
+    float: left;
+    margin-top:3%;
+
+}
+.form_registro {
+    border-radius: 4px;
+    margin: 1% auto;
+    width: 500px;
+
+}
+.div_radio{
+    float: right;
+
+}
+.div_contrasena{
+
+    margin: 10%;
+
+}
+.lb_tipo_usuario{
+    float: left;
+}
+.div_tp_user{
+    margin: 3%;
+    padding: 2%;
+}
