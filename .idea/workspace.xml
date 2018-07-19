@@ -104,7 +104,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TicketController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TicketController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/Ticket/TicketController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="148">
@@ -113,6 +113,20 @@
                 <element signature="e#6#88#0#PHP" expanded="true" />
                 <element signature="e#131#159#0#PHP" expanded="true" />
                 <element signature="e#1173#1209#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UsuarioController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/Usuario/UsuarioController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="548">
+              <caret line="80" column="5" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
+              <folding>
+                <element signature="e#6#88#0#PHP" expanded="true" />
+                <element signature="e#132#161#0#PHP" expanded="true" />
+                <element signature="e#2374#2415#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -194,12 +208,12 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Ticket.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Usuario.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/Usuario/UsuarioController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Usuario/lista_usuarios.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Ticket/nuevo_ticket.html" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Ticket/lista_ticket.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Ticket/nuevo_ticket.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/Ticket/TicketController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/Usuario/UsuarioController.php" />
       </list>
     </option>
   </component>
@@ -294,12 +308,6 @@
               <item name="taskapp" type="b2602c69:ProjectViewProjectNode" />
               <item name="taskapp" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="taskapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="taskapp" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="Resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -326,6 +334,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="AppBundle" type="462c0819:PsiDirectoryNode" />
               <item name="Controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="taskapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="taskapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="AppBundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Controller" type="462c0819:PsiDirectoryNode" />
+              <item name="Usuario" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="taskapp" type="b2602c69:ProjectViewProjectNode" />
@@ -395,12 +411,12 @@
       <workItem from="1531669758877" duration="10425000" />
       <workItem from="1531770302599" duration="15911000" />
       <workItem from="1531942519030" duration="23110000" />
-      <workItem from="1532026994899" duration="6829000" />
+      <workItem from="1532026994899" duration="7687000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92634000" />
+    <option name="totallyTimeSpent" value="93492000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -642,18 +658,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/Usuario/UsuarioController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="99" column="33" selection-start-line="99" selection-start-column="33" selection-end-line="99" selection-end-column="33" />
-          <folding>
-            <element signature="e#6#88#0#PHP" expanded="true" />
-            <element signature="e#132#161#0#PHP" expanded="true" />
-            <element signature="e#934#973#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Usuario/lista_usuarios.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="403">
@@ -720,6 +724,18 @@
             <element signature="e#6#88#0#PHP" expanded="true" />
             <element signature="e#131#159#0#PHP" expanded="true" />
             <element signature="e#1173#1209#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/Usuario/UsuarioController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="548">
+          <caret line="80" column="5" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
+          <folding>
+            <element signature="e#6#88#0#PHP" expanded="true" />
+            <element signature="e#132#161#0#PHP" expanded="true" />
+            <element signature="e#2374#2415#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

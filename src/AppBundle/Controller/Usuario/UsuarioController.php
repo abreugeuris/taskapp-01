@@ -44,9 +44,42 @@ class UsuarioController extends Controller
 
     }
     /**
-     * @Route("/registro", name="registro_usuario")
+     * @Route("/registro", name="register")
      */
-    public function indexRegistro( Request $request){
+    public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    {
+
+        $usuario = new Usuario();
+        $form = $this ->createForm(UsuarioType::class,$usuario);
+        // Hacemos que el formulario maneje la petición
+        $form->handleRequest($request);
+
+        // Comprobamos que se ha enviado el formulario
+        if ($form->isSubmitted() && $form->isValid()) {
+
+
+            // Codificamos la contraseña en texto plano accediendo al 'encoder' que habíamos indicado en la configuración
+            $password = $this->get('security.password_encoder')
+                ->encodePassword($usuario, $usuario->getPlainPassword());
+
+            // Establecemos la contraseña real ya codificada al usuario
+            $usuario->setContrasena($password);
+
+            // Persistimos la entidad como cualquier otra
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($usuario);
+            $em->flush();
+
+            // Redigirimos a la pantalla de login para que acceda el nuevo usuario
+            //echo "Usuario guardado";
+            return $this->redirectToRoute('lista_usuarios');
+        }
+        return $this->render(
+            '@App/Usuario/registro_usuario.html.twig',
+            array('form' => $form->createView())
+        );
+    }
+    /*public function indexRegistro( Request $request){
 
         $usuario=new Usuario();
         $form= $this->createForm(UsuarioType::class,$usuario);
@@ -58,7 +91,7 @@ class UsuarioController extends Controller
         );
 
 
-    }
+    }*/
 
 
 
