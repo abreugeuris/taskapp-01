@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+
 /**
  * Usuario
  *
@@ -53,16 +54,22 @@ class Usuario implements UserInterface
 
 
     /**
-     * @var $tickets
-     *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Ticket", mappedBy="usuario")
+     * $tickets
+     * @ORM\OneToMany(targetEntity="Ticket", mappedBy="usuario")
      */
     private $tickets;
 
+    /**
+     * $ticketsAsignado
+     * @ORM\OneToMany(targetEntity="Ticket", mappedBy="usuarioAsignado")
+     */
+    private $ticketsAsignado;
 
     public function __construct()
     {
         $this->tickets = new ArrayCollection();
+        $this->ticketsAsignado = new ArrayCollection();
+
     }
 
 
@@ -187,6 +194,24 @@ class Usuario implements UserInterface
     {
         $this->tickets = $tickets;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getTicketsAsignado()
+    {
+        return $this->ticketsAsignado;
+    }
+
+    /**
+     * @param mixed $ticketsAsignado
+     */
+    public function setTicketsAsignado($ticketsAsignado)
+    {
+        $this->ticketsAsignado = $ticketsAsignado;
+    }
+
+
 
     /**
      * Returns the roles granted to the user.

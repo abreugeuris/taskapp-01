@@ -7,7 +7,7 @@
 {% block menu_usuario %}class="active"{% endblock %}
 
 {% block body %}
-
+   {#{{ dump(usuarios) }}#}
     <h1>Lista de Usuarios</h1>
     <table class="table">
         <thead>
@@ -22,7 +22,7 @@
                 <td>{{ usuario.username }}</td>
                 <td>{{ usuario.tipoUsuario }}</td>
                 <td>
-                   {## <a class="btn btn-primary" href="{{ path('editar_usuario', { 'id' : usuario.id} ) }}">Editar</a>
+                    {#<a class="btn btn-primary" href="{{ path('editar_usuario', { 'id' : usuario.id} ) }}">Editar</a>
                     <button class="btn btn-danger" onclick="eliminar('{{ usuario.id}}')">Eliminar</button>#}
                 </td>
             </tr>

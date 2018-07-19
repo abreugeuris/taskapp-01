@@ -10,17 +10,48 @@ namespace AppBundle\Controller\Ticket;
 
 
 use AppBundle\Entity\Ticket;
-use FOS\JsRoutingBundle\Controller\Controller;
+
+use AppBundle\Entity\Usuario;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
-class TicketController
+
+class TicketController extends Controller
 {
 
 
+    /**
+     * @Route("/tickets", name="lista_tickets")
+     */
+    public function indexTickets()
+    {   $tickets = $this->getDoctrine()
+        ->getRepository(Ticket::class)
+        ->findAll();
 
+        return $this->render('@App/Ticket/lista_ticket.html.twig',
+            [
+                "tickets"=>$tickets
+            ]
+        );
+
+    }
+    /**
+     * @Route("/nuevo/ticket", name="nuevo_ticket")
+     */
+    public function nuevoTickets(Request $request)
+
+    {
+        $usuarioRepo=$this->getDoctrine()->getRepository(Usuario::class);
+            $usuarios = $usuarioRepo->findByTipoUsuario("tecnico");
+
+        return $this->render('@App/Ticket/nuevo_ticket.html.twig',
+           ["usuarios"=>$usuarios]
+        );
+
+    }
 
 
 
@@ -55,9 +86,5 @@ class TicketController
 
         return new JsonResponse($jsonContent);
     }
-
-
-
-
 
 }

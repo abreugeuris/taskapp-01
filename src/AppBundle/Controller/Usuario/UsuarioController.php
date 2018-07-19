@@ -16,6 +16,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class UsuarioController extends Controller
 {
@@ -93,6 +94,21 @@ class UsuarioController extends Controller
         $jsonContent = json_decode($jsonContent, true);
 
         return new JsonResponse($jsonContent);
+    }
+
+    /**
+     * @Route("/rest/usuario/{id}",options={"expose"=true}, name="eliminar_usuario")
+     * @Method("DELETE")
+     * @param Usuario $usuario
+     * @return Response
+     */
+    public function eliminarUsuario(Usuario $usuario)
+    {
+        /* Eliminar */
+        $em=$this->getDoctrine()->getManager();
+        $em->remove($usuario);
+        $em->flush();
+        return new Response("1");
     }
 
 

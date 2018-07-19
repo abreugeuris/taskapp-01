@@ -43,17 +43,14 @@ class Ticket
     private $fechaCompletado;
 
     /**
-     * @var int
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario", inversedBy="tickets")
-     *
+     * @ORM\ManyToOne(targetEntity="Usuario", inversedBy="tickets")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $usuario;
 
     /**
      *
-     * @var int
-     * @ORM\Column(name="usuario_asignado_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="Usuario", inversedBy="ticketsAsignado")
      */
     private $usuarioAsignado;
 
@@ -203,5 +200,6 @@ class Ticket
     {
         $this->usuarioAsignado = $usuarioAsignado;
     }
+
 }
 
