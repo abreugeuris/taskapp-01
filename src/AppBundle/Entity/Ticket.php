@@ -44,7 +44,7 @@ class Ticket
 
     /**
      * @ORM\ManyToOne(targetEntity="Usuario", inversedBy="tickets")
-     * @ORM\JoinColumn(nullable=false)
+     *
      */
     private $usuario;
 
