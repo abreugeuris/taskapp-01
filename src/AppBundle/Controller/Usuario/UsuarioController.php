@@ -17,6 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UsuarioController extends Controller
 {
@@ -59,11 +60,12 @@ class UsuarioController extends Controller
 
 
             // Codificamos la contraseña en texto plano accediendo al 'encoder' que habíamos indicado en la configuración
-            $password = $this->get('security.password_encoder')
-                ->encodePassword($usuario, $usuario->getPlainPassword());
+            $password = $passwordEncoder->encodePassword($usuario, $usuario->getContrasena());
+
 
             // Establecemos la contraseña real ya codificada al usuario
             $usuario->setContrasena($password);
+
 
             // Persistimos la entidad como cualquier otra
             $em = $this->getDoctrine()->getManager();

@@ -2,38 +2,34 @@
 {% extends 'base.html.twig' %}
  {% block titulo%}-Registro de Usuario{% endblock %}
 {% block body %}
-    <div class="container jumbotron" >
+    <div class="container jumbotron form_registro " >
         <h2>Registro de Usuario</h2>
-        <div >
-        {{ form_start(form) }}
+        {{ form_start(form)}}
+        {{ form_row(form.Username,{'attr':{'class':'form-control' }}) }}
+        {{ form_row(form.Nombre,{'attr':{'class':'form-control' }}) }}
+        <div class="div_tp_user">
+        {{ form_row(form.tipoUsuario, {'attr':{'class':'pull-right' }}) }}
         </div>
-        <div >
-        {{ form_row(form.username) }}
+        <div class="div_contrasena">
+            {{ form_row(form.plainPassword) }}
         </div>
-        {{ form_row(form.nombre) }}
-        <div>
-        {{ form_row(form.tipoUsuario) }}
-        </div >
-            {{ form_row(form.contrasena) }}
-        <div >
-            {# Enlace al registro #}
-            <u class="login"><a  href="">Login</a>
-
-            </u>
-            <button type="submit"  class="btn btn-success btn_submit"  onclick="guardar()">Registrar Usuario</button>
+        <a href="{{ path('homepage') }}">LogIn</a>
+            <div class="pull-right">
+            <button type="submit"  class="btn btn-success " >Registrar Usuario</button>
         </div>
+        {{ form_end(form) }}
     </div>
-    {{ form_end(form) }}
+{% endblock %}
 {% block javascrit %}
-   {#{{ parent() }}#}
+   {{ parent() }}
     <script>
 
         function guardar(){
 
-            var username = $('#appbundle_usuario_username').val();
-            var nombre = $('#appbundle_usuario_nombre').val();
+            var username = $('#appbundle_usuario_Email').val();
+            var nombre = $('#appbundle_usuario_Nombre').val();
             var tipo_usuario= $('#appbundle_usuario_tipoUsuario').val();
-            var contrasena = $('#appbundle_usuario_contrasena').val();
+            var contrasena = $('#appbundle_usuario_plainPassword_second').val();
 
             var data = {
                 nombre: nombre,
@@ -57,6 +53,6 @@
         }
 
     </script>
-    {% endblock %}
+
 
 {% endblock %}

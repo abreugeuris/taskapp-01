@@ -65,6 +65,14 @@ class Usuario implements UserInterface
      */
     private $ticketsAsignado;
 
+
+
+    private $plainPassword;
+
+
+
+
+
     public function __construct()
     {
         $this->tickets = new ArrayCollection();
@@ -114,9 +122,9 @@ class Usuario implements UserInterface
      *
      * @return Usuario
      */
-    public function setUsername($username)
+    public function setUsername($email)
     {
-        $this->username = $username;
+        $this->username = $email;
 
         return $this;
     }
@@ -214,6 +222,27 @@ class Usuario implements UserInterface
 
 
     /**
+     * @return mixed
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * @param mixed $plainPassword
+     */
+    public function setPlainPassword($plainPassword)
+    {
+        $this->plainPassword = $plainPassword;
+    }
+
+
+
+
+
+
+    /**
      * Returns the roles granted to the user.
      *
      * <code>
@@ -232,6 +261,7 @@ class Usuario implements UserInterface
     public function getRoles()
     {
         // TODO: Implement getRoles() method.
+        return ["ROLE_USER"];
     }
 
     /**
@@ -245,6 +275,7 @@ class Usuario implements UserInterface
     public function getPassword()
     {
         // TODO: Implement getPassword() method.
+        return $this->contrasena;
     }
 
     /**
