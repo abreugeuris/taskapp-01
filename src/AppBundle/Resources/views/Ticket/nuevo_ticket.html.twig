@@ -2,6 +2,76 @@
 {% block titulo %}-Nuevo Ticket{% endblock %}
 {% block body %}
 
-<h3>Nuevo Ticket</h3>
-{{ dump(usuarios) }}
+
+{#{{ dump(usuarios) }}#}
+    <div class="container ">
+        <div class="jumbotron">
+        <h2 class="pull-left">Nueva Ticket</h2>
+        <div >
+
+
+            <a href="{{ path('lista_tickets') }}" class="btn btn-danger">Cancelar </a>
+            <button type="button" class="btn  btn-success " onclick="guardarTicket()">Guardar</button>
+            <br>
+        </div>
+        <br>
+            <div class="form-group">
+                <label for="selec_usuario" class="pull-left">Asignar A:</label>
+                <select class="form-control" name="usuarios" id="usuarioSelec" required="true">
+                <option value=" ">Seleccione un Usuario Tecnico</option>
+                {% for usuario in usuarios %}
+                    <option value="{{ usuario.id }}">{{ usuario.nombre }}</option>
+                {% endfor %}
+                </select>
+                <div >
+                    {{form_start(form, {'attr':{'class':'form-group' }}) }}
+                    {{ form_row(form.descripcion, {'attr':{'class':'form-control'}}) }}
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+{% endblock %}
+{% block javascrit %}
+{{ parent() }}
+<script>
+
+    function guardarTicket() {
+        if($('#usuarioSelec').val()==' '){
+            alert("No a seleccinado ningun usuario Tecnico, Para Continuar Seleccione Un usuario de la Lista");
+            return;
+        }
+        else {
+            var descripcion = $('#appbundle_ticket_descripcion').val();
+            var usuario_asignado_id = $('#usuarioSelec').val();
+
+
+            var data = {
+                descripcion: descripcion,
+                usuario_asignado_id:usuario_asignado_id
+
+            };
+            console.log(data);
+            $.ajax({
+                url:Routing.generate("guardar_ticket"),
+                type:'POST',
+                data: JSON.stringify(data),
+                success: function (response) {
+                    console.log(response);
+                    window.location.href= Routing.generate('lista_tickets');
+                    alert("Ticket Guardado");
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+
+        }
+
+
+
+
+    }
+</script>
 {% endblock %}

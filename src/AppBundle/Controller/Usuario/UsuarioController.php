@@ -23,7 +23,7 @@ class UsuarioController extends Controller
 {
 
     /**
-     * @Route("/", name="home_taskapp")
+     * @Route("/", name="home_taskapp", options={"expose"=true})
      */
     public function indexhome(){
         return $this->render('default/index.html.twig');
@@ -45,7 +45,7 @@ class UsuarioController extends Controller
 
     }
     /**
-     * @Route("/registro", name="register")
+     * @Route("/registro", name="register" ,options={"expose"=true})
      */
     public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
@@ -102,6 +102,15 @@ class UsuarioController extends Controller
 
     // Restful API
 
+    /**
+     * @Route("/rest/usuario/",options={"expose"=true}, name="buscar_usuarios")
+     * @Method("GET")
+     */
+    public function buscarUsuarios(Request $request)
+    {
+        return null;
+    }
+
 
     /**
      * @Route("/rest/usuario", options={"expose"=true}, name="guardar_usuario")
@@ -143,8 +152,19 @@ class UsuarioController extends Controller
         $em=$this->getDoctrine()->getManager();
         $em->remove($usuario);
         $em->flush();
-        return new Response("1");
+        return ;
     }
+    /**
+     * @Route("/rest/usuario/{id}",options={"expose"=true}, name="buscar_usuario")
+     * @Method("GET")
+     * @param Usuario $usuario
+     * @return Response
+     */
+    public function buscarUsuario(Usuario $usuario)
+    {
+        /* Eliminar */
+        $em=$this->getDoctrine()->getRepository()->findAll();
 
+    }
 
 }

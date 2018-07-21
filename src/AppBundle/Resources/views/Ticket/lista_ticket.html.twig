@@ -3,7 +3,7 @@
 {% block titulo%} -lista Tickets{% endblock %}
 
 {% block body%}
-{#{{ dump(tickets) }}#}
+{#{{ dump(tickets) }}#}{{ dump(tickets)  }}
     <div class="container">
     <h3 class="text-left">Mis Asignaciones</h3>
     <div class="pull-right">
@@ -24,9 +24,9 @@
             <tr>
                 <td>{{ ticket.id }}</td>
                 <td>{{ ticket.fechaCreado |date('d/m/y')}}</td>
-                <td>{{ ticket.usuarioAsignado }}</td>
+                {#<td>{{ ticket.usuarioAsignado }}</td>#}
                 <td>{{ ticket.estado }}</td>
-
+                <td> <a href="{{ path('eliminar_ticket', {id : ticket.id }) }}" class="btn btn-danger">Eliminar</a></td>
             </tr>
 
 
