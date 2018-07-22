@@ -3,15 +3,15 @@
 security:
 
     encoders:
-           AppBundle\Entity\Usuario:
+           AppBundle\Entity\Usuarios:
               algorithm: bcrypt
               cost: 4
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
-        our_db_provider:
+            our_db_provider:
                 entity:
-                    class: AppBundle:Usuario
+                    class: AppBundle:Usuarios
                     property: username
                   # if you're using multiple entity managers
                   # manager_name: customer
@@ -22,18 +22,15 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
+
         main:
             anonymous: ~
             provider: our_db_provider
             form_login:
-                  login_path: /
-                  check_path: /
-                  default_target_path: lista_task
-                  always_use_default_target_path: true
+                login_path: login
+                check_path: login
 
-            logout:
-                  path: logout
-                  target: /
+
             # activate different ways to authenticate
 
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
